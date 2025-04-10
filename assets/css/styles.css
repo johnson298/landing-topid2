@@ -885,7 +885,7 @@ p.story__text__title {
 }
 
 .story__text__achievement__item__title img {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: 0;
   left: 0;

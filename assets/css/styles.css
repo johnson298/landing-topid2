@@ -23,13 +23,13 @@ body {
 }
 
 .animation-dots > img {
-  animation: dots 1s linear 0.5s infinite;
+  animation: dots 0.7s linear 0.2s infinite;
 }
 
 @keyframes dots {
   0% {
     opacity: 0.4;
-    transform: translateY(-200%);
+    transform: translateY(-100%);
   }
   to {
     opacity: 0.9;
@@ -730,7 +730,7 @@ body {
 
 .story__image__wrapper {
   position: absolute;
-  left: calc(54% - 38vw);
+  left: calc(54% - 41vw);
   top: 95px;
 }
 
@@ -1140,6 +1140,15 @@ p.story__text__achievement__item__value__title {
 
 @media (max-width: 767px) {
   * {
+  }
+
+  section.testimonials {
+    padding-top: 50px;
+  }
+
+  body .hero__right__image img {
+    margin: 0;
+    width: 280px !important;
   }
 
   .advertise__media-item {
@@ -1770,7 +1779,7 @@ p.story__text__achievement__item__value__title {
 @media (max-width: 767px) {
   .live-course {
     padding-top: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
   }
 
   .live-course__header {

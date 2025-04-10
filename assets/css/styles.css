@@ -7,6 +7,7 @@ body {
   padding-top: 0;
   color: #fff;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 .gradient-orange {
@@ -1294,6 +1295,8 @@ p.story__text__achievement__item__value__title {
   background-color: #fff2e8;
   padding: 38px 0;
   color: #15191e;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 .roadmap .container {

@@ -160,9 +160,16 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="./assets/script/script.js"></script>
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/jquery-3.7.1.min.js"></script>
   </head>
   <body
     class="page-template page-template-template-pages page-template-dichvu-niengrang page-template-template-pagesdichvu-niengrang-php page page-id-38540 wp-custom-logo no-sidebar"
@@ -298,12 +305,14 @@
     </section>
 
     <div class="section-connector section-connector--down">
-      <img
-        src="./assets/images/next-section-down.png"
-        width="122"
-        height="122"
-        alt="Section Connector"
-      />
+      <div class="section-connector__image">
+        <img
+          src="./assets/images/single-arr.png"
+          width="122"
+          height="122"
+          alt="Section Connector"
+        />
+      </div>
     </div>
     <section class="story" id="gioi-thieu">
       <div class="container">
@@ -602,7 +611,7 @@
           </h2>
         </div>
 
-        <div class="live-course__gallery">
+        <div class="live-course__gallery gallery-image">
           <div class="live-course__gallery__grid">
             <!-- Large image on left -->
             <div class="live-course__gallery__item large" data-aos="zoom-in">
@@ -724,7 +733,7 @@
           </h2>
         </div>
 
-        <div class="testimonials__gallery">
+        <div class="testimonials__gallery gallery-image">
           <div class="row">
             <!-- First column -->
             <div class="col-lg-3 col-md-6 col-6">
@@ -1202,783 +1211,149 @@
         once: true, // Animation will only happen once - when scrolling down
       });
     </script>
+    <!-- Gallery Modal -->
+    <div
+      class="modal fade"
+      id="galleryModal"
+      tabindex="-1"
+      aria-labelledby="galleryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-body p-0 bg-black">
+            <div class="swiper gallerySwiper">
+              <div class="swiper-wrapper">
+                <!-- Slides will be added here dynamically -->
+              </div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script>
-      // slider_gallery_image
-      var slider_gallery_image = {
-        init: function () {
-          var slider_gallery_image = $(".slider_gallery_image");
-          var number_slide = $(".slider_gallery_image .item").length;
-          if (window.matchMedia("(max-width: 767px)").matches) {
-            if (slider_gallery_image.length > 0 && number_slide >= 2) {
-              slider_gallery_image.slick({
-                infinite: true,
-                speed: 300,
-                autoplay: false,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                dots: false,
-                arrows: true,
-              });
-            }
-          } else {
-            if (slider_gallery_image.length > 0 && number_slide >= 5) {
-              slider_gallery_image.slick({
-                infinite: true,
-                arrows: true,
-                speed: 300,
-                autoplay: false,
-                slidesToShow: 5,
-                dots: false,
-                slidesToScroll: 1,
-              });
-            }
-          }
-        },
-      };
+    <!-- Bootstrap Js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/bootstrap.bundle.min.js"></script>
 
-      jQuery(document).ready(function ($) {
-        slider_gallery_image.init();
-      });
-    </script>
+    <!-- nice select js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/jquery.nice-select.min.js"></script>
 
+    <script src="https://elearning.topid.vn/assets/frontend/default/vendors/swiper/swiper-bundle.min.js"></script>
+    <script src="https://elearning.topid.vn/assets/frontend/default/vendors/counterup/jquery.counterup.min.js"></script>
+    <script src="https://elearning.topid.vn/assets/frontend/default/vendors/counterup/jquery.waypoints.js"></script>
+    <script src="https://elearning.topid.vn/assets/frontend/default/vendors/slick/slick.min.js"></script>
+
+    <script src="https://elearning.topid.vn/assets/frontend/default/vendors/flatpickr/flatpickr.min.js"></script>
+
+    <!-- owl carousel js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/owl.carousel.min.js"></script>
+
+    <!-- Player Js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/plyr.js"></script>
+
+    <!-- Yaireo Tagify -->
+    <script src="https://elearning.topid.vn/assets/global/tagify-master/dist/tagify.min.js"></script>
+
+    <!-- Jquery Ui Js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/jquery-ui.min.js"></script>
+
+    <!-- price range Js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/price_range_script.js"></script>
+
+    <!-- Main Js -->
+    <script src="https://elearning.topid.vn/assets/frontend/default/js/script.js"></script>
     <script>
-      function init_iframe_video() {
-        var vidDefer = document.getElementsByTagName("iframe");
-        for (var i = 0; i < vidDefer.length; i++) {
-          if (vidDefer[i].getAttribute("data-src")) {
-            vidDefer[i].setAttribute(
-              "src",
-              vidDefer[i].getAttribute("data-src")
-            );
-          }
-        }
-      }
-      window.onload = init_iframe_video;
-    </script>
-    <script type="text/javascript" id="kk-star-ratings-js-extra">
-      /* <![CDATA[ */
-      var kk_star_ratings = {
-        action: "kk-star-ratings",
-        endpoint: "https:\/\/nhakhoavidental.com\/wp-admin\/admin-ajax.php",
-        nonce: "a03b4e0d89",
-      };
-      /* ]]> */
-    </script>
-    <script
-      type="text/javascript"
-      defer
-      src="https://nhakhoavidental.com/wp-content/plugins/kk-star-ratings/src/core/public/js/kk-star-ratings.min.js?ver=5.4.10.2"
-      id="kk-star-ratings-js"
-    ></script>
-    <script type="text/javascript" id="rocket-browser-checker-js-after">
-      /* <![CDATA[ */
-      "use strict";
-      var _createClass = (function () {
-        function defineProperties(target, props) {
-          for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
-            (descriptor.enumerable = descriptor.enumerable || !1),
-              (descriptor.configurable = !0),
-              "value" in descriptor && (descriptor.writable = !0),
-              Object.defineProperty(target, descriptor.key, descriptor);
-          }
-        }
-        return function (Constructor, protoProps, staticProps) {
-          return (
-            protoProps && defineProperties(Constructor.prototype, protoProps),
-            staticProps && defineProperties(Constructor, staticProps),
-            Constructor
-          );
-        };
-      })();
-      function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor))
-          throw new TypeError("Cannot call a class as a function");
-      }
-      var RocketBrowserCompatibilityChecker = (function () {
-        function RocketBrowserCompatibilityChecker(options) {
-          _classCallCheck(this, RocketBrowserCompatibilityChecker),
-            (this.passiveSupported = !1),
-            this._checkPassiveOption(this),
-            (this.options = !!this.passiveSupported && options);
-        }
-        return (
-          _createClass(RocketBrowserCompatibilityChecker, [
-            {
-              key: "_checkPassiveOption",
-              value: function (self) {
-                try {
-                  var options = {
-                    get passive() {
-                      return !(self.passiveSupported = !0);
-                    },
-                  };
-                  window.addEventListener("test", null, options),
-                    window.removeEventListener("test", null, options);
-                } catch (err) {
-                  self.passiveSupported = !1;
-                }
-              },
-            },
-            {
-              key: "initRequestIdleCallback",
-              value: function () {
-                !1 in window &&
-                  (window.requestIdleCallback = function (cb) {
-                    var start = Date.now();
-                    return setTimeout(function () {
-                      cb({
-                        didTimeout: !1,
-                        timeRemaining: function () {
-                          return Math.max(0, 50 - (Date.now() - start));
-                        },
-                      });
-                    }, 1);
-                  }),
-                  !1 in window &&
-                    (window.cancelIdleCallback = function (id) {
-                      return clearTimeout(id);
-                    });
-              },
-            },
-            {
-              key: "isDataSaverModeOn",
-              value: function () {
-                return (
-                  "connection" in navigator &&
-                  !0 === navigator.connection.saveData
-                );
-              },
-            },
-            {
-              key: "supportsLinkPrefetch",
-              value: function () {
-                var elem = document.createElement("link");
-                return (
-                  elem.relList &&
-                  elem.relList.supports &&
-                  elem.relList.supports("prefetch") &&
-                  window.IntersectionObserver &&
-                  "isIntersecting" in IntersectionObserverEntry.prototype
-                );
-              },
-            },
-            {
-              key: "isSlowConnection",
-              value: function () {
-                return (
-                  "connection" in navigator &&
-                  "effectiveType" in navigator.connection &&
-                  ("2g" === navigator.connection.effectiveType ||
-                    "slow-2g" === navigator.connection.effectiveType)
-                );
-              },
-            },
-          ]),
-          RocketBrowserCompatibilityChecker
-        );
-      })();
-      /* ]]> */
-    </script>
-    <script type="text/javascript" id="rocket-delay-js-js-after">
-      /* <![CDATA[ */
-      "use strict";
-      var _createClass = (function () {
-        function i(e, t) {
-          for (var r = 0; r < t.length; r++) {
-            var i = t[r];
-            (i.enumerable = i.enumerable || !1),
-              (i.configurable = !0),
-              "value" in i && (i.writable = !0),
-              Object.defineProperty(e, i.key, i);
-          }
-        }
-        return function (e, t, r) {
-          return t && i(e.prototype, t), r && i(e, r), e;
-        };
-      })();
-      function _classCallCheck(e, t) {
-        if (!(e instanceof t))
-          throw new TypeError("Cannot call a class as a function");
-      }
-      var RocketLazyLoadScripts = (function () {
-        function r(e, t) {
-          _classCallCheck(this, r),
-            (this.attrName = "data-rocketlazyloadscript"),
-            (this.browser = t),
-            (this.options = this.browser.options),
-            (this.triggerEvents = e),
-            (this.userEventListener = this.triggerListener.bind(this));
-        }
-        return (
-          _createClass(
-            r,
-            [
-              {
-                key: "init",
-                value: function () {
-                  this._addEventListener(this);
-                },
-              },
-              {
-                key: "reset",
-                value: function () {
-                  this._removeEventListener(this);
-                },
-              },
-              {
-                key: "_addEventListener",
-                value: function (t) {
-                  this.triggerEvents.forEach(function (e) {
-                    return window.addEventListener(
-                      e,
-                      t.userEventListener,
-                      t.options
-                    );
-                  });
-                },
-              },
-              {
-                key: "_removeEventListener",
-                value: function (t) {
-                  this.triggerEvents.forEach(function (e) {
-                    return window.removeEventListener(
-                      e,
-                      t.userEventListener,
-                      t.options
-                    );
-                  });
-                },
-              },
-              {
-                key: "_loadScriptSrc",
-                value: function () {
-                  var r = this;
-                  document
-                    .querySelectorAll("script[" + this.attrName + "]")
-                    .forEach(function (e) {
-                      var t = e.getAttribute(r.attrName);
-                      e.setAttribute("src", t), e.removeAttribute(r.attrName);
-                    }),
-                    this.reset();
-                },
-              },
-              {
-                key: "triggerListener",
-                value: function () {
-                  this._loadScriptSrc(), this._removeEventListener(this);
-                },
-              },
-            ],
-            [
-              {
-                key: "run",
-                value: function () {
-                  if (RocketBrowserCompatibilityChecker) {
-                    new r(
-                      ["keydown", "mouseover", "touchmove", "touchstart"],
-                      new RocketBrowserCompatibilityChecker({ passive: !0 })
-                    ).init();
-                  }
-                },
-              },
-            ]
-          ),
-          r
-        );
-      })();
-      RocketLazyLoadScripts.run();
-      /* ]]> */
-    </script>
-    <script type="text/javascript" id="rocket-preload-links-js-extra">
-      /* <![CDATA[ */
-      var RocketPreloadLinksConfig = {
-        excludeUris:
-          "\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin|\/logout",
-        usesTrailingSlash: "",
-        imageExt: "jpg|jpeg|gif|png|tiff|bmp|webp|avif",
-        fileExt: "jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm",
-        siteUrl: "https:\/\/nhakhoavidental.com",
-        onHoverDelay: "100",
-        rateThrottle: "3",
-      };
-      /* ]]> */
-    </script>
-    <script type="text/javascript" id="rocket-preload-links-js-after">
-      /* <![CDATA[ */
-      "use strict";
-      var r =
-          "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-            ? function (e) {
-                return typeof e;
-              }
-            : function (e) {
-                return e &&
-                  "function" == typeof Symbol &&
-                  e.constructor === Symbol &&
-                  e !== Symbol.prototype
-                  ? "symbol"
-                  : typeof e;
-              },
-        e = (function () {
-          function i(e, t) {
-            for (var n = 0; n < t.length; n++) {
-              var i = t[n];
-              (i.enumerable = i.enumerable || !1),
-                (i.configurable = !0),
-                "value" in i && (i.writable = !0),
-                Object.defineProperty(e, i.key, i);
-            }
-          }
-          return function (e, t, n) {
-            return t && i(e.prototype, t), n && i(e, n), e;
-          };
-        })();
-      function i(e, t) {
-        if (!(e instanceof t))
-          throw new TypeError("Cannot call a class as a function");
-      }
-      var t = (function () {
-        function n(e, t) {
-          i(this, n),
-            (this.browser = e),
-            (this.config = t),
-            (this.options = this.browser.options),
-            (this.prefetched = new Set()),
-            (this.eventTime = null),
-            (this.threshold = 1111),
-            (this.numOnHover = 0);
-        }
-        return (
-          e(
-            n,
-            [
-              {
-                key: "init",
-                value: function () {
-                  !this.browser.supportsLinkPrefetch() ||
-                    this.browser.isDataSaverModeOn() ||
-                    this.browser.isSlowConnection() ||
-                    ((this.regex = {
-                      excludeUris: RegExp(this.config.excludeUris, "i"),
-                      images: RegExp(".(" + this.config.imageExt + ")$", "i"),
-                      fileExt: RegExp(".(" + this.config.fileExt + ")$", "i"),
-                    }),
-                    this._initListeners(this));
-                },
-              },
-              {
-                key: "_initListeners",
-                value: function (e) {
-                  -1 < this.config.onHoverDelay &&
-                    document.addEventListener(
-                      "mouseover",
-                      e.listener.bind(e),
-                      e.listenerOptions
-                    ),
-                    document.addEventListener(
-                      "mousedown",
-                      e.listener.bind(e),
-                      e.listenerOptions
-                    ),
-                    document.addEventListener(
-                      "touchstart",
-                      e.listener.bind(e),
-                      e.listenerOptions
-                    );
-                },
-              },
-              {
-                key: "listener",
-                value: function (e) {
-                  var t = e.target.closest("a"),
-                    n = this._prepareUrl(t);
-                  if (null !== n)
-                    switch (e.type) {
-                      case "mousedown":
-                      case "touchstart":
-                        this._addPrefetchLink(n);
-                        break;
-                      case "mouseover":
-                        this._earlyPrefetch(t, n, "mouseout");
-                    }
-                },
-              },
-              {
-                key: "_earlyPrefetch",
-                value: function (t, e, n) {
-                  var i = this,
-                    r = setTimeout(function () {
-                      if (((r = null), 0 === i.numOnHover))
-                        setTimeout(function () {
-                          return (i.numOnHover = 0);
-                        }, 1e3);
-                      else if (i.numOnHover > i.config.rateThrottle) return;
-                      i.numOnHover++, i._addPrefetchLink(e);
-                    }, this.config.onHoverDelay);
-                  t.addEventListener(
-                    n,
-                    function e() {
-                      t.removeEventListener(n, e, { passive: !0 }),
-                        null !== r && (clearTimeout(r), (r = null));
-                    },
-                    { passive: !0 }
-                  );
-                },
-              },
-              {
-                key: "_addPrefetchLink",
-                value: function (i) {
-                  return (
-                    this.prefetched.add(i.href),
-                    new Promise(function (e, t) {
-                      var n = document.createElement("link");
-                      (n.rel = "prefetch"),
-                        (n.href = i.href),
-                        (n.onload = e),
-                        (n.onerror = t),
-                        document.head.appendChild(n);
-                    }).catch(function () {})
-                  );
-                },
-              },
-              {
-                key: "_prepareUrl",
-                value: function (e) {
-                  if (
-                    null === e ||
-                    "object" !== (void 0 === e ? "undefined" : r(e)) ||
-                    !1 in e ||
-                    -1 === ["http:", "https:"].indexOf(e.protocol)
-                  )
-                    return null;
-                  var t = e.href.substring(0, this.config.siteUrl.length),
-                    n = this._getPathname(e.href, t),
-                    i = {
-                      original: e.href,
-                      protocol: e.protocol,
-                      origin: t,
-                      pathname: n,
-                      href: t + n,
-                    };
-                  return this._isLinkOk(i) ? i : null;
-                },
-              },
-              {
-                key: "_getPathname",
-                value: function (e, t) {
-                  var n = t ? e.substring(this.config.siteUrl.length) : e;
-                  return (
-                    n.startsWith("/") || (n = "/" + n),
-                    this._shouldAddTrailingSlash(n) ? n + "/" : n
-                  );
-                },
-              },
-              {
-                key: "_shouldAddTrailingSlash",
-                value: function (e) {
-                  return (
-                    this.config.usesTrailingSlash &&
-                    !e.endsWith("/") &&
-                    !this.regex.fileExt.test(e)
-                  );
-                },
-              },
-              {
-                key: "_isLinkOk",
-                value: function (e) {
-                  return (
-                    null !== e &&
-                    "object" === (void 0 === e ? "undefined" : r(e)) &&
-                    !this.prefetched.has(e.href) &&
-                    e.origin === this.config.siteUrl &&
-                    -1 === e.href.indexOf("?") &&
-                    -1 === e.href.indexOf("#") &&
-                    !this.regex.excludeUris.test(e.href) &&
-                    !this.regex.images.test(e.href)
-                  );
-                },
-              },
-            ],
-            [
-              {
-                key: "run",
-                value: function () {
-                  "undefined" != typeof RocketPreloadLinksConfig &&
-                    new n(
-                      new RocketBrowserCompatibilityChecker({
-                        capture: !0,
-                        passive: !0,
-                      }),
-                      RocketPreloadLinksConfig
-                    ).init();
-                },
-              },
-            ]
-          ),
-          n
-        );
-      })();
-      t.run();
-      /* ]]> */
-    </script>
-    <script
-      type="text/javascript"
-      defer
-      src="https://nhakhoavidental.com/wp-content/themes/vidental/js/magnific-popup.min.js?ver=20151216"
-      id="magnific-js-js"
-    ></script>
-    <script
-      type="text/javascript"
-      defer
-      src="https://nhakhoavidental.com/wp-content/themes/vidental/assets/slick-1.6.0/slick.min.js?ver=20151215"
-      id="slick-js"
-    ></script>
-    <script type="text/javascript" id="main-js-js-extra">
-      /* <![CDATA[ */
-      var vmajax = {
-        ajaxurl: "https:\/\/nhakhoavidental.com\/wp-admin\/admin-ajax.php",
-      };
-      /* ]]> */
-    </script>
-    <script
-      type="text/javascript"
-      defer
-      src="https://nhakhoavidental.com/wp-content/themes/vidental/js/main.min.js?ver=20151216"
-      id="main-js-js"
-    ></script>
-    <script
-      data-minify="1"
-      type="text/javascript"
-      defer
-      src="https://nhakhoavidental.com/wp-content/cache/min/1/wp-content/themes/vidental/js/custom-3b07db0d32d53b7d34b4b1bdad86260f.js"
-      id="custom-js-js"
-    ></script>
-    <script>
-      window.lazyLoadOptions = {
-        elements_selector: "img[data-lazy-src],.rocket-lazyload",
-        data_src: "lazy-src",
-        data_srcset: "lazy-srcset",
-        data_sizes: "lazy-sizes",
-        class_loading: "lazyloading",
-        class_loaded: "lazyloaded",
-        threshold: 300,
-        callback_loaded: function (element) {
-          if (
-            element.tagName === "IFRAME" &&
-            element.dataset.rocketLazyload == "fitvidscompatible"
-          ) {
-            if (element.classList.contains("lazyloaded")) {
-              if (typeof window.jQuery != "undefined") {
-                if (jQuery.fn.fitVids) {
-                  jQuery(element).parent().fitVids();
-                }
-              }
-            }
-          }
-        },
-      };
-      window.addEventListener(
-        "LazyLoad::Initialized",
-        function (e) {
-          var lazyLoadInstance = e.detail.instance;
-          if (window.MutationObserver) {
-            var observer = new MutationObserver(function (mutations) {
-              var image_count = 0;
-              var iframe_count = 0;
-              var rocketlazy_count = 0;
-              mutations.forEach(function (mutation) {
-                for (i = 0; i < mutation.addedNodes.length; i++) {
-                  if (
-                    typeof mutation.addedNodes[i].getElementsByTagName !==
-                    "function"
-                  ) {
-                    return;
-                  }
-                  if (
-                    typeof mutation.addedNodes[i].getElementsByClassName !==
-                    "function"
-                  ) {
-                    return;
-                  }
-                  images = mutation.addedNodes[i].getElementsByTagName("img");
-                  is_image = mutation.addedNodes[i].tagName == "IMG";
-                  iframes =
-                    mutation.addedNodes[i].getElementsByTagName("iframe");
-                  is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
-                  rocket_lazy =
-                    mutation.addedNodes[i].getElementsByClassName(
-                      "rocket-lazyload"
-                    );
-                  image_count += images.length;
-                  iframe_count += iframes.length;
-                  rocketlazy_count += rocket_lazy.length;
-                  if (is_image) {
-                    image_count += 1;
-                  }
-                  if (is_iframe) {
-                    iframe_count += 1;
-                  }
-                }
+      $(document).ready(function () {
+        // Array to store all gallery images
+        let galleryImages = [];
+
+        // Find all gallery-image sections and collect their images
+        $(".gallery-image").each(function () {
+          $(this)
+            .find("img")
+            .each(function () {
+              const imgSrc = $(this).attr("src");
+              galleryImages.push(imgSrc);
+
+              // Make the image clickable
+              $(this).css("cursor", "pointer");
+              $(this).data("index", galleryImages.length - 1);
+
+              // Add click event to open modal
+              $(this).on("click", function () {
+                const index = $(this).data("index");
+                openGalleryModal(index);
               });
-              if (image_count > 0 || iframe_count > 0 || rocketlazy_count > 0) {
-                lazyLoadInstance.update();
-              }
             });
-            var b = document.getElementsByTagName("body")[0];
-            var config = { childList: !0, subtree: !0 };
-            observer.observe(b, config);
-          }
-        },
-        !1
-      );
-    </script>
-    <script
-      data-no-minify="1"
-      async
-      src="https://nhakhoavidental.com/wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"
-    ></script>
-
-    <script
-      data-rocketlazyloadscript="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0&appId=522342946137984"
-      async
-      defer
-      crossorigin="anonymous"
-      nonce="dm0KTWhc"
-    ></script>
-
-    <script type="text/javascript">
-      /*
-       * Code sửa lỗi link zalo.me/{sđt}
-       * Author: levantoan.com
-       */
-      var zalo_acc = {
-        "0987933309": "14jxf6srjg9ur",
-      };
-      function devvnCheckLinkAvailability(
-        link,
-        successCallback,
-        errorCallback
-      ) {
-        var hiddenIframe = document.querySelector("#hiddenIframe");
-        if (!hiddenIframe) {
-          hiddenIframe = document.createElement("iframe");
-          hiddenIframe.id = "hiddenIframe";
-          hiddenIframe.style.display = "none";
-          document.body.appendChild(hiddenIframe);
-        }
-        var timeout = setTimeout(function () {
-          errorCallback("Link is not supported.");
-          window.removeEventListener("blur", handleBlur);
-        }, 2500); // Đặt timeout (2.5 giây) để kiểm tra liên kết. Thay đổi số này lên 5000 nếu bạn chưa chạy được
-        var result = {};
-        function handleMouseMove(event) {
-          if (!result.x) {
-            result = {
-              x: event.clientX,
-              y: event.clientY,
-            };
-          }
-        }
-        function handleBlur() {
-          clearTimeout(timeout);
-          window.addEventListener("mousemove", handleMouseMove);
-        }
-        window.addEventListener("blur", handleBlur);
-        window.addEventListener(
-          "focus",
-          function onFocus() {
-            setTimeout(function () {
-              if (document.hasFocus()) {
-                successCallback(
-                  (function (pos) {
-                    if (!pos.x) {
-                      return true;
-                    }
-                    var screenWidth =
-                      window.innerWidth ||
-                      document.documentElement.clientWidth ||
-                      document.body.clientWidth;
-                    var alertWidth = 300;
-                    var alertHeight = 100;
-                    var isXInRange =
-                      pos.x - 100 < 0.5 * (screenWidth + alertWidth) &&
-                      pos.x + 100 > 0.5 * (screenWidth + alertWidth);
-                    var isYInRange =
-                      pos.y - 40 < alertHeight && pos.y + 40 > alertHeight;
-                    return isXInRange && isYInRange
-                      ? "Link can be opened."
-                      : "Link is not supported.";
-                  })(result)
-                );
-              } else {
-                successCallback("Link can be opened.");
-              }
-              window.removeEventListener("focus", onFocus);
-              window.removeEventListener("blur", handleBlur);
-              window.removeEventListener("mousemove", handleMouseMove);
-            }, 500);
-          },
-          { once: true }
-        );
-        hiddenIframe.contentWindow.location.href = link;
-      }
-      Object.keys(zalo_acc).map(function (sdt, index) {
-        let qrcode = zalo_acc[sdt];
-        const zaloLinks = document.querySelectorAll(
-          'a[href*="zalo.me/' + sdt + '"]'
-        );
-        zaloLinks.forEach((zalo) => {
-          zalo.addEventListener("click", (event) => {
-            event.preventDefault();
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isIOS = /iphone|ipad|ipod/.test(userAgent);
-            const isAndroid = /android/.test(userAgent);
-            let redirectURL = null;
-            if (isIOS) {
-              redirectURL = "zalo://qr/p/" + qrcode;
-              window.location.href = redirectURL;
-            } else if (isAndroid) {
-              redirectURL = "zalo://zaloapp.com/qr/p/" + qrcode;
-              window.location.href = redirectURL;
-            } else {
-              redirectURL = "zalo://conversation?phone=" + sdt;
-              zalo.classList.add("zalo_loading");
-              devvnCheckLinkAvailability(
-                redirectURL,
-                function (result) {
-                  zalo.classList.remove("zalo_loading");
-                },
-                function (error) {
-                  zalo.classList.remove("zalo_loading");
-                  redirectURL = "https://chat.zalo.me/?phone=" + sdt;
-                  window.location.href = redirectURL;
-                }
-              );
-            }
-          });
         });
-      });
-      //Thêm css vào site để lúc ấn trên pc trong lúc chờ check chuyển hướng sẽ không ấn vào thẻ a đó được nữa
-      var styleElement = document.createElement("style");
-      var cssCode = ".zalo_loading { pointer-events: none; }";
-      styleElement.innerHTML = cssCode;
-      document.head.appendChild(styleElement);
-    </script>
-    <script>
-      window.addEventListener("message", function (event) {
-        if (event.origin === "https://sv.weup.net") {
-          document.getElementById("iframecomment").style.height =
-            event.data.CommentsHeight + "px";
+
+        // Initialize Swiper
+        let gallerySwiper;
+
+        function initSwiper() {
+          gallerySwiper = new Swiper(".gallerySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+              disabledClass: "swiper-button-disabled",
+              hiddenClass: "swiper-button-hidden",
+              lockClass: "swiper-button-lock",
+              renderBullet: function (index, className) {
+                return (
+                  '<span class="' + className + '">' + (index + 1) + "</span>"
+                );
+              },
+            },
+          });
+
+          // Custom navigation with Bootstrap icons
+          $(".swiper-button-next").html('<i class="bi bi-chevron-right"></i>');
+          $(".swiper-button-prev").html('<i class="bi bi-chevron-left"></i>');
+        }
+
+        // Function to open the gallery modal and show specific image
+        function openGalleryModal(index) {
+          // Clear existing slides
+          $(".gallerySwiper .swiper-wrapper").empty();
+
+          // Add all images to swiper
+          galleryImages.forEach((imgSrc) => {
+            $(".gallerySwiper .swiper-wrapper").append(`
+              <div class="swiper-slide">
+                <img src="${imgSrc}" class="img-fluid" alt="Gallery Image">
+              </div>
+            `);
+          });
+
+          // Open the modal
+          const galleryModal = new bootstrap.Modal(
+            document.getElementById("galleryModal")
+          );
+          galleryModal.show();
+
+          // Initialize swiper after modal is shown (to ensure proper sizing)
+          $("#galleryModal").on("shown.bs.modal", function () {
+            if (gallerySwiper) {
+              gallerySwiper.destroy();
+            }
+            initSwiper();
+
+            // Go to the clicked image
+            gallerySwiper.slideTo(index + 1); // +1 because of loop mode
+          });
         }
       });
     </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>
 <!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1742690934 -->

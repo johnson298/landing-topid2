@@ -353,7 +353,7 @@
 
             <p class="story__text__description">
               Khởi nghiệp với hai bàn tay trắng và hàng tá thất bại. Những ngày
-              đầu, tôi “đốt” sạch 10 triệu chạy quảng cáo Shopee Ads mà không có
+              đầu, tôi "đốt" sạch 10 triệu chạy quảng cáo Shopee Ads mà không có
               nổi 1 đơn hàng. Đêm nào cũng thức trắng, tôi từng nghĩ mình sẽ bỏ
               cuộc. Nhưng rồi tôi quyết tâm đứng dậy: mày mò từng lỗi sai, tối
               ưu từng chi tiết, và kiên trì không ngừng. Kết quả? Chỉ sau 6
@@ -1267,27 +1267,33 @@
     <script src="https://elearning.topid.vn/assets/frontend/default/js/script.js"></script>
     <script>
       $(document).ready(function () {
-        // Array to store all gallery images
-        let galleryImages = [];
+        // Find all gallery-image sections
+        $(".gallery-image").each(function (sectionIndex) {
+          // Array to store images for this specific section
+          const sectionImages = [];
 
-        // Find all gallery-image sections and collect their images
-        $(".gallery-image").each(function () {
+          // Find images in this section
           $(this)
             .find("img")
-            .each(function () {
+            .each(function (imageIndex) {
               const imgSrc = $(this).attr("src");
-              galleryImages.push(imgSrc);
+              sectionImages.push(imgSrc);
 
               // Make the image clickable
               $(this).css("cursor", "pointer");
-              $(this).data("index", galleryImages.length - 1);
+              $(this).data("section-index", sectionIndex);
+              $(this).data("image-index", imageIndex);
 
               // Add click event to open modal
               $(this).on("click", function () {
-                const index = $(this).data("index");
-                openGalleryModal(index);
+                const sectionIdx = $(this).data("section-index");
+                const imageIdx = $(this).data("image-index");
+                openGalleryModal(sectionIdx, imageIdx);
               });
             });
+
+          // Store the section's images array on the section element
+          $(this).data("section-images", sectionImages);
         });
 
         // Initialize Swiper
@@ -1322,12 +1328,17 @@
         }
 
         // Function to open the gallery modal and show specific image
-        function openGalleryModal(index) {
+        function openGalleryModal(sectionIndex, imageIndex) {
+          // Get images from the specific section
+          const sectionImages = $(".gallery-image")
+            .eq(sectionIndex)
+            .data("section-images");
+
           // Clear existing slides
           $(".gallerySwiper .swiper-wrapper").empty();
 
-          // Add all images to swiper
-          galleryImages.forEach((imgSrc) => {
+          // Add only this section's images to swiper
+          sectionImages.forEach((imgSrc) => {
             $(".gallerySwiper .swiper-wrapper").append(`
               <div class="swiper-slide">
                 <img src="${imgSrc}" class="img-fluid" alt="Gallery Image">
@@ -1349,7 +1360,7 @@
             initSwiper();
 
             // Go to the clicked image
-            gallerySwiper.slideTo(index + 1); // +1 because of loop mode
+            gallerySwiper.slideTo(imageIndex + 1); // +1 because of loop mode
           });
         }
       });

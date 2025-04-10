@@ -6,6 +6,7 @@ body {
   background: linear-gradient(180deg, #f38744 30.28%, #fa6000 107.26%) no-repeat;
   padding-top: 0;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .gradient-orange {
@@ -21,7 +22,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: #00000000;
   padding: 30px;
   padding-bottom: 40px;
 }
